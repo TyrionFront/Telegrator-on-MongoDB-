@@ -19,7 +19,7 @@ const loginUserController = require('./controllers/loginUser');
 const logoutController = require('./controllers/logout');
 
 dotenv.config();
-mongoose.connect('mongodb+srv://mirrorbot:mirrorbot@cluster0.mpdwk.mongodb.net/BotChat', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
