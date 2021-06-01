@@ -18,7 +18,6 @@ const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 const logoutController = require('./controllers/logout');
 
-// mongodb+srv://mirrorbot:mirrorbot@cluster0.mpdwk.mongodb.net/test
 dotenv.config();
 mongoose.connect('mongodb+srv://mirrorbot:mirrorbot@cluster0.mpdwk.mongodb.net/BotChat', {
   useNewUrlParser: true,
