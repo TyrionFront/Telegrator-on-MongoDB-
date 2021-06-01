@@ -28,7 +28,7 @@ bot.on('message', async (msg) => {
     chat_id: id,
     username,
     text,
-    responseText: '',
+    responseText: text,
     date,
   };
   const [part, ...rest] = text.split(' ');
