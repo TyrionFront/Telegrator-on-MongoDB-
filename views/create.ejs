@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header'); -%>
+    <body>
+        <%- include('layouts/navbar'); -%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('/assets/img/contact-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Create New Post</h1>
+                            <span class="subheading">...and your info will B immediately saved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Feel free 2 share your experience !</p>
+                        <div class="my-5">
+                            <form action="/posts/store" method="POST" enctype="multipart/form-data">
+                                <div class="control-group">
+                                    <div class="form-group floating-label-form-group controls">
+                                        <label>Image</label>
+                                        <input type="file" class="form-control" id="image" name="image">
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="form-floating">
+                                    <input class="form-control" id="title" name="title" type="text" placeholder="Title" />
+                                    <label for="inputName">Title</label>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" name="message" style="height: 12rem"></textarea>
+                                    <label for="inputMessage">Description</label>
+                                </div>
+                                <br />
+                                <button class="btn btn-primary text-uppercase" type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <hr>
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>

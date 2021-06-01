@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header'); -%>
+    <body>
+        <%- include('layouts/navbar'); -%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Bot chat messages</h1>
+                            <span class="subheading">Messages list from your chat with "Text_mirror" Telegram-bot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <% for (let i = 0; i < blogPosts.length; i += 1) { %>
+                        <!-- Post preview-->
+                        <div class="post-preview">
+                            <a href="/post/<%= blogPosts[i]._id %>">
+                                <h2 class="post-title">
+                                    Msg id: <%= blogPosts[i].message_id %>
+                                </h2>
+                                <h3 class="post-subtitle">
+                                    User text: <%= blogPosts[i].text %>
+                                </h3>
+                                <h3 class="post-subtitle">
+                                    Bot response: ...
+                                </h3>
+                            </a>
+                            <p class="post-meta">
+                                Posted by
+                                <a href="#!"><%= blogPosts[i].username %></a>
+                                on <%= blogPosts[i].date.toDateString() %>
+                            </p>
+                        </div>
+                        <!-- Divider-->
+                        <hr class="my-4" />
+                    <% } %>
+                    <!-- Pager-->
+                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>        
+    </body>
+</html>
