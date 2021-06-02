@@ -20,7 +20,6 @@ bot.on('message', async (msg) => {
     message_id,
     chat: { id, username },
     text = '',
-    date,
   } = msg;
 
   const dataToSave = {
@@ -29,7 +28,7 @@ bot.on('message', async (msg) => {
     username,
     text,
     responseText: text,
-    date,
+    date: new Date(),
   };
   const [part, ...rest] = text.split(' ');
   if (!part || part === '/pin_msg') {
