@@ -22,6 +22,7 @@ dotenv.config();
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const app = express();
@@ -33,6 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(expressSession({
   secret: 'Valar Morghulis',
+  saveUninitialized: true,
 }));
 app.use((req, res, next) => {
   app.locals.loggedInId = req.session.userId;

@@ -23,7 +23,8 @@
     "express-session": "^1.17.2",
     "mongoose": "^5.12.10",
     "mongoose-unique-validator": "^2.0.3",
-    "node-telegram-bot-api": "^0.53.0"
+    "node-telegram-bot-api": "^0.53.0",
+    "random-token": "^0.0.8"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

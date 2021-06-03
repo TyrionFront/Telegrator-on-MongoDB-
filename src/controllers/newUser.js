@@ -1,6 +1,5 @@
 module.exports = (req, res) => {
-  const [data = {}] = req.flash('data');
-  const { username = '', password = '' } = data;
+  const { username, password } = req.query;
   res.render('register', {
     errors: req.flash('validationErrors'),
     username,
