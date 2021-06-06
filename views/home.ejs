@@ -21,7 +21,7 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <% if (blogPosts.length > 0) { %>
-                        <form class="d-flex justify-content-end mb-4" action="/users/limited" method="POST" enctype="multipart/form-data">
+                        <form class="d-flex justify-content-end mb-4" action="/posts/limited" method="POST" enctype="multipart/form-data">
                             <button class="btn btn-primary btn-sm" type="submit">Select count & submit</button>
                             <% const limits = [5, 10, 20, 'All']; %>
                             <select class="form-select" name="count">
