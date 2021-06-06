@@ -20,6 +20,32 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
+                    <% if (blogPosts.length > 0) { %>
+                        <form class="d-flex justify-content-end mb-4" action="/users/limited" method="POST" enctype="multipart/form-data">
+                            <button class="btn btn-primary btn-sm" type="submit">Select count & submit</button>
+                            <% const limits = [5, 10, 20, 'All']; %>
+                            <select class="form-select" name="count">
+                                <% limits.forEach((count) => { %>
+                                    <% if (currentLimit === count) { %>
+                                        <option value="<%= count %>" selected><%= count %></option>
+                                    <% } else { %>
+                                        <option value="<%= count %>"><%= count %></option>
+                                    <% } %>
+                                <% }); %>
+                            </select>
+                        </form>
+                        <%  %>
+                        <div class="d-flex justify-content-between">
+                            <% if (currentLimit !== 'All') { %>
+                                <% if (!hideFresherBtn) { %>
+                                 <div class="mb-4"><a class="btn btn-primary text-uppercase" href="/posts/fresher/<%= currentLimit %>">get <%= currentLimit %> fresher Posts</a></div>
+                                <% } %> 
+                                <% if (!hideOlderBtn) { %>
+                                 <div class="mb-4"><a class="btn btn-primary text-uppercase" href="/posts/older/<%= currentLimit %>">get <%= currentLimit %> older Posts</a></div>
+                                <% } %> 
+                            <% } %>
+                        </div>
+                    <% } %>
                     <% for (let i = 0; i < blogPosts.length; i += 1) { %>
                         <!-- Post preview-->
                         <div class="post-preview">
@@ -43,8 +69,6 @@
                         <!-- Divider-->
                         <hr class="my-4" />
                     <% } %>
-                    <!-- Pager-->
-                    <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
                 </div>
             </div>
         </div>

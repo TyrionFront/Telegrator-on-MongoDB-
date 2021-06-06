@@ -16,6 +16,9 @@ const newUserController = require('./controllers/newUser');
 const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
+const getLimitedUsersListController = require('./controllers/limitCount');
+const prevPostsController = require('./controllers/prevList');
+const nextPostsController = require('./controllers/nextList');
 const logoutController = require('./controllers/logout');
 
 dotenv.config();
@@ -49,6 +52,9 @@ app.get('/auth/register', redirectIfAuthenticated, newUserController);
 app.post('/users/register', redirectIfAuthenticated, storeUserController);
 app.get('/auth/login', redirectIfAuthenticated, loginController);
 app.post('/users/login', redirectIfAuthenticated, loginUserController);
+app.post('/users/limited', getLimitedUsersListController);
+app.get('/posts/fresher/:count', prevPostsController);
+app.get('/posts/older/:count', nextPostsController);
 app.get('/auth/logout', logoutController);
 app.use((req, res) => res.render('notfound'));
 

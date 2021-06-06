@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 const dotenv = require('dotenv');
 const randomToken = require('random-token');
-// const URL = require('url');
 const TelegramBot = require('node-telegram-bot-api');
 const BlogPost = require('./models/BlogPost');
 const User = require('./models/User');
@@ -20,7 +19,6 @@ const commandsAndResponses = {
     const newUrl = new URL(`auth/${pathType}`, userUrl);
     newUrl.searchParams.append('username', username);
     newUrl.searchParams.append('password', password);
-    console.log(newUrl);
     if (pathType === 'login') {
       await user.updateOne({ $set: { password } });
     }
