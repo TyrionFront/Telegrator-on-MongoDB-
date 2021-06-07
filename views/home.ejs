@@ -36,13 +36,11 @@
                         </form>
                         <%  %>
                         <div class="d-flex justify-content-between">
-                            <% if (currentLimit !== 'All') { %>
-                                <% if (!hideFresherBtn) { %>
-                                 <div class="mb-4"><a class="btn btn-primary text-uppercase" href="/posts/fresher/<%= currentLimit %>">get <%= currentLimit %> fresher Posts</a></div>
-                                <% } %> 
-                                <% if (!hideOlderBtn) { %>
-                                 <div class="mb-4"><a class="btn btn-primary text-uppercase" href="/posts/older/<%= currentLimit %>">get <%= currentLimit %> older Posts</a></div>
-                                <% } %> 
+                            <% if (!hideFresherBtn) { %>
+                             <div class="mb-4"><a class="btn btn-primary text-uppercase" href="/posts/fresher/<%= currentLimit %>">get <%= currentLimit %> fresher Posts</a></div>
+                            <% } %> 
+                            <% if (!hideOlderBtn) { %>
+                             <div class="mb-4"><a class="btn btn-primary text-uppercase" href="/posts/older/<%= currentLimit %>">get <%= currentLimit %> older Posts</a></div>
                             <% } %>
                         </div>
                     <% } %>

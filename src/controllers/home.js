@@ -8,19 +8,27 @@ module.exports = async (req, res) => {
   const { skipCount = 0, currentLimit = 5 } = countAndLimit;
   const limitValue = currentLimit === 'All' ? currentLimit : Number(currentLimit);
   let hideFresherBtn = true;
-  let hideOlderBtn = false;
+  let hideOlderBtn = true;
 
-  if (userId) {
-    const { username } = await User.findById(userId);
-    const pendindResult = BlogPost.aggregate([
-      { $match: { username } },
-      { $sort: { date: -1 } },
-    ]);
-    blogPosts = limitValue === 'All' ? await pendindResult
-      : await pendindResult.skip(skipCount)
-        .limit(limitValue);
-    hideFresherBtn = limitValue === 'All' || skipCount < limitValue;
-    hideOlderBtn = limitValue === 'All' || (skipCount > limitValue && blogPosts.length < limitValue);
+  if (!userId) {
+    res.render('home', {
+      blogPosts, currentLimit: 'All', hideFresherBtn, hideOlderBtn,
+    });
+    return;
+  }
+
+  const { username } = await User.findById(userId);
+  const pendindResult = BlogPost.aggregate([
+    { $match: { username } },
+    { $sort: { date: -1 } },
+  ]);
+
+  blogPosts = await pendindResult;
+
+  if (limitValue !== 'All') {
+    blogPosts = await pendindResult.skip(skipCount).limit(limitValue);
+    hideFresherBtn = skipCount < limitValue;
+    hideOlderBtn = skipCount > limitValue && blogPosts.length < limitValue;
   }
 
   req.flash('skipCount', skipCount);
